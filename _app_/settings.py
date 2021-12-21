@@ -43,7 +43,7 @@ THIRD_APPS = [
 ]
 
 MY_APPS = [
-
+    'address'
 ]
 
 
