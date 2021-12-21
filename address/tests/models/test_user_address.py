@@ -68,7 +68,7 @@ class UserAddressModelTest(TestCase):
     
     def test_if_charge_not_sent_must_be_the_same_as_instalation_fields(self):
         data = {
-            "address_charge": self.address_charge,
+            "address_instalation": self.address_instalation,
             "contact": "contato@mail.com",
             "wireless_login": "wifi_login",
             "wireless_password": "wifi_password",
@@ -77,6 +77,6 @@ class UserAddressModelTest(TestCase):
         }
 
         users_address = UserAddress.objects.create(**data)
-        self.assertEqual(user_address.address_charge, user_address.address_instalation)
+        self.assertEqual(users_address.address_instalation, users_address.address_charge)
 
 
