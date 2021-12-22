@@ -23,8 +23,6 @@ class UserModelTest(TestCase):
     
     
     def test_user_fields(self):
-        self.assertIsInstance(self.user.phone_list[0], Phone)
-
         self.assertIsInstance(self.user.email, str)
         self.assertEqual(self.user.email, self.data["email"])
 
@@ -37,16 +35,16 @@ class UserModelTest(TestCase):
 
     def test_invalids_emails(self):
         self.data["email"] = "email.email.com"
-        self.assertRaises(ValidationError, User.objects.create_user, **self.data)
+        self.assertRaises(ValidationError, User.objects.create_user(**self.data).full_clean)
 
         self.data["email"] = "@email.com"
-        self.assertRaises(ValidationError, User.objects.create_user, **self.data)
+        self.assertRaises(ValidationError, User.objects.create_user(**self.data).full_clean)
 
         self.data["email"] = "email@emailcom"
-        self.assertRaises(ValidationError, User.objects.create_user, **self.data)
+        self.assertRaises(ValidationError, User.objects.create_user(**self.data).full_clean)
 
         self.data["email"] = "email@.com"
-        self.assertRaises(ValidationError, User.objects.create_user, **self.data)
+        self.assertRaises(ValidationError, User.objects.create_user(**self.data).full_clean)
 
 
     def test_email_unique_field(self):
