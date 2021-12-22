@@ -43,7 +43,9 @@ THIRD_APPS = [
 ]
 
 MY_APPS = [
-    'address'
+    'address',
+    'phone',
+    'user'
 ]
 
 
