@@ -10,6 +10,7 @@ class UserAddress(models.Model):
     wireless_password = models.CharField(max_length=100)
     onu_login = models.CharField(max_length=100)
     onu_password = models.CharField(max_length=100)
+    user = models.ForeignKey("user.User", on_delete=CASCADE, related_name="address_list")
 
 
     def save(self, *args, **kwargs):
